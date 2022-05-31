@@ -1,0 +1,34 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(510,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ray_casting.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(12,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(13,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(16,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(18,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(62,28): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(86,61): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(134,67): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(145,67): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(205,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(217,68): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(227,151): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(227,113): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(227,75): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(276,47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\martv\cpp\cavity_flow\ray_casting\main.cpp(287,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  ray_casting.vcxproj -> C:\Users\martv\cpp\cavity_flow\x64\Debug\cavity_flow.exe

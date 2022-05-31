@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ce86203d-2a65-4d43-b462-117da4c89b6e": {
+      "ProjectGuid": "ce86203d-2a65-4d43-b462-117da4c89b6e",
+      "DisplayName": "ray_casting",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
