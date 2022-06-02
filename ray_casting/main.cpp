@@ -17,7 +17,6 @@ const float dt = 0.00001;
 const float rho = 1.;
 const float nu = 0.1;
 const int n_it = 50;
-const int ARROW_SCALE = 100;
 
 
 std::vector<std::vector<float>> matrix_zeros(int matrix_width, int matrix_height) {
@@ -119,6 +118,7 @@ void cavity_flow(std::vector<std::vector<float>>& u, std::vector<std::vector<flo
     vn = v;
     b = matrix_zeros(nx, ny);
 
+    //calculate pressure poisson equation (conservation of momentum)
     build_up_b(b, u, v);
     pressure_poisson(p, pn, b);
 
@@ -228,6 +228,35 @@ void draw_pressure_contour(sf::RenderWindow& window, sf::RectangleShape& pressur
     window.draw(pressure_rectangle);
 }
 
+void draw(sf::RenderWindow& window, sf::RectangleShape& velocity_vector, sf::RectangleShape& pressure_rectangle, std::vector<std::vector<float>>& p, std::vector<std::vector<float>>& u, std::vector<std::vector<float>>& v) {
+    //handles all drawing on the window class
+    
+    window.clear();
+    
+    float abs_vel;
+    float p_max, p_min, vel_max;
+
+    update_min_max_field_values(p, p_min, p_max, u, v, vel_max);
+
+    float velocity_arrow_scale_factor = vel_max * 100.;
+
+    for (int y = 0; y < ny; y++)
+    {
+        for (int x = 0; x < nx; x++)
+        {
+            abs_vel = sqrt(u[y][x] * u[y][x] + v[y][x] * v[y][x]);
+
+            draw_pressure_contour(window, pressure_rectangle, p, p_max, p_min, x, y);
+
+            if (abs(u[y][x]) > 0.01) {
+                draw_velocty_vector(window, velocity_vector, u, v, abs_vel, x, y, velocity_arrow_scale_factor);
+            }
+
+        }
+    }
+    window.display();
+}
+
 
 int main()
 {
@@ -239,9 +268,7 @@ int main()
     std::vector<std::vector<float>> pn;
     std::vector<std::vector<float>> b;
 
-    float abs_vel;
-    float p_max, p_min, vel_max;
-    float velocity_arrow_scale_factor;
+    int time_step = 0;
 
     u = matrix_zeros(nx, ny);
     un = u;
@@ -260,7 +287,7 @@ int main()
 
     while (window.isOpen())
     {
-        window.clear();
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -271,25 +298,10 @@ int main()
 
         cavity_flow(u, un, v, vn, p, pn, b);
 
-        update_min_max_field_values(p, p_min, p_max, u, v, vel_max);
-
-        velocity_arrow_scale_factor = vel_max * 100.;
-
-        for (int y = 0; y < ny; y++)
-        {
-            for (int x = 0; x < nx; x++)
-            {
-                abs_vel = sqrt(u[y][x] * u[y][x] + v[y][x] * v[y][x]);
-
-                draw_pressure_contour(window, pressure_rectangle, p, p_max, p_min, x, y);
-
-                if (abs(u[y][x]) > 0.01) { 
-                    draw_velocty_vector(window, velocity_vector, u, v, abs_vel, x, y, velocity_arrow_scale_factor);
-                }
-
-            }
+        if (time_step % 10 == 0) {
+            draw(window, velocity_vector, pressure_rectangle, p, u, v);
         }
 
-        window.display();
+        time_step++;
     }
 }
